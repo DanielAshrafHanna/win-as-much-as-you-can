@@ -49,16 +49,16 @@ export default class buttons extends Component {
         
         }
 
-  IncrementItem_X = (e) => {
-    e.preventDfaule()
+  IncrementItem_X = () => {
+    // e.preventDfaule()
       this.Score() // test
       this.setState({ x: this.state.x + 1 });
       this.setState({ xy: this.state.xy + 1 });   // incremeting total score 
        
           }
 
-  IncrementItem_Y = (e) => {
-      e.preventDefault()
+  IncrementItem_Y = () => {
+    //   e.preventDefault()
     this.Score() // test
      this.setState({ y: this.state.y + 1 });
      this.setState({ xy: this.state.xy + 1 });  // incremeting total score 
@@ -76,6 +76,7 @@ export default class buttons extends Component {
         <div>
             <div class="mt-3 col-md-12">
                 <button onClick={this.IncrementItem_X} type="button"  class="btn btn-secondary btn-lg">X  </button>
+                <button onClick={this.Score} type="button"  class="btn btn-secondary btn-lg">test  </button>
                 { this.state.show ? <h2>{ this.state.x }</h2> : '' }
                 { this.state.show ? <h2>{ this.state.x_score }</h2> : '' }
                 {/* { this.state.show ? <h2>{ this.state.xy }</h2> : '' } */}
