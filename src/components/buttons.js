@@ -17,6 +17,9 @@ export default class buttons extends Component {
       Score= () => {
         // this.setState({ Y: this.state.Y + 10 });   // for testing 
 
+        console.log('x now is ',this.state.x, 'y now is ',this.state.y)
+
+
         if (this.state.x === 1 && this.state.y === 3){
             // this.setState({ X_score: this.state.X_score + 10 }); 
             this.setState({x_score: this.state.x_score + 3});
@@ -50,18 +53,18 @@ export default class buttons extends Component {
         }
 
   IncrementItem_X = (e) => {
-    e.preventDfaule()
-      this.Score() // test
-      this.setState({ x: this.state.x + 1 });
-      this.setState({ xy: this.state.xy + 1 });   // incremeting total score 
+    e.preventDefault()
+    this.setState({ x: this.state.x + 1 }, this.Score);
+    this.setState({ xy: this.state.xy + 1 });   // incremeting total score 
+    // this.Score() // test
        
           }
 
   IncrementItem_Y = (e) => {
       e.preventDefault()
-    this.Score() // test
-     this.setState({ y: this.state.y + 1 });
-     this.setState({ xy: this.state.xy + 1 });  // incremeting total score 
+      this.setState({ y: this.state.y + 1 }, this.Score);
+      this.setState({ xy: this.state.xy + 1 });  // incremeting total score 
+    //   this.Score() // test
      
           }
 
@@ -75,18 +78,18 @@ export default class buttons extends Component {
         return (
         <div>
             <div class="mt-3 col-md-12">
-                <button onClick={this.IncrementItem_X} type="button"  class="btn btn-secondary btn-lg">X  </button>
-                { this.state.show ? <h2>{ this.state.x }</h2> : '' }
-                { this.state.show ? <h2>{ this.state.x_score }</h2> : '' }
+                <button onClick={this.IncrementItem_X} type="button"  className="btn btn-secondary btn-lg">X  </button>
+                X: { this.state.show ? <h2>{ this.state.x }</h2> : '' }
+                X Score: { this.state.show ? <h2>{ this.state.x_score }</h2> : '' }
                 {/* { this.state.show ? <h2>{ this.state.xy }</h2> : '' } */}
                  
                 
             </div>
 
             <div class="mt-3 col-md-12">
-                <button onClick={this.IncrementItem_Y} type="button"  class="btn btn-secondary btn-lg">Y </button>
-                { this.state.show ? <h2>{ this.state.y_score }</h2> : '' }
-                { this.state.show ? <h2>{ this.state.y }</h2> : '' }
+                <button onClick={this.IncrementItem_Y} type="button"  className="btn btn-secondary btn-lg">Y </button>
+                Y:{ this.state.show ? <h2>{ this.state.y }</h2> : '' }
+                Y Score:{ this.state.show ? <h2>{ this.state.y_score }</h2> : '' }
             </div>
 
                 
