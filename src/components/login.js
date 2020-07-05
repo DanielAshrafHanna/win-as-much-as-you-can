@@ -31,9 +31,9 @@ export default class login extends Component {
          rand = Math.round(min + Math.random() * (max - min),0);
         this.setState({ random: this.state.random + rand });
 
-        const random1 = {
-            name: this.state.random
-          };
+        // const random1 = {
+        //     name: this.state.random
+        //   };
 
         // axios.post('http://localhost:3000/register',{
         //     random1
@@ -45,7 +45,7 @@ export default class login extends Component {
             random: this.state.random
           };
       
-          axios.post(`http://localhost:3000/register`, { rend })
+          axios.post(`http://localhost:3000/register`,  rend )
             .then(res => {
               console.log(res);
               console.log(res.data);
@@ -86,7 +86,7 @@ export default class login extends Component {
         };
         console.log(obj);
 
-        axios.post(`http://localhost:3000/login`, { obj })
+        axios.post(`http://localhost:3000/login`,  obj )
         .then(res => {
           console.log(res);
           console.log(res.data);
