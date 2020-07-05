@@ -7,7 +7,7 @@ export default class login extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeCode = this.onChangeTodoCode.bind(this);
+        this.onChangeCode = this.onChangeCode.bind(this);
         // this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
         // this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -24,30 +24,49 @@ export default class login extends Component {
 
 
     handleClick() {    // generate random code for LOGIN
+        
         var rand =0;
         const min = 1000;
         const max = 9000;
          rand = Math.round(min + Math.random() * (max - min),0);
         this.setState({ random: this.state.random + rand });
 
-        axios.post('http://localhost:3000/register',{
+        const random1 = {
+            name: this.state.random
+          };
+
+        // axios.post('http://localhost:3000/register',{
+        //     random1
+        // })
+        //      .then(res => { console.log(res)
+        //     });
+
+        const rend = {
             random: this.state.random
-        })
-             .then(res => console.log(res));
+          };
+      
+          axios.post(`http://localhost:3000/register`, { rend })
+            .then(res => {
+              console.log(res);
+              console.log(res.data);
+            })
+
+            console.log(rend)  // testing 
+             
 
       }
 
-    onChangeTodoCode(e) {
+    onChangeCode(e) {
         this.setState({
             code: e.target.value
         });
     }
 
-    onChangeTodoResponsible(e) {
-        this.setState({
-            todo_responsible: e.target.value
-        });
-    }
+    // onChangeTodoResponsible(e) {
+    //     this.setState({
+    //         todo_responsible: e.target.value
+    //     });
+    // }
 
     // onChangeTodoPriority(e) {
     //     this.setState({
@@ -55,42 +74,50 @@ export default class login extends Component {
     //     });
     // }
 
-    onSubmit(e) {
+    onSubmit(e) {  // send data to  login
         e.preventDefault();
         
-        console.log(`Form submitted:`);
-        console.log(`Todo Description: ${this.state.code}`);
-        // console.log(`Todo Responsible: ${this.state.todo_responsible}`);
-        // console.log(`Todo Priority: ${this.state.todo_priority}`);
-        
-        this.setState({
-            code: '',
-            todo_responsible: '',
-            todo_priority: '',
-            todo_completed: false
+      //  console.log(`Form submitted:`);
+        console.log(`the code is : ${this.state.code}`);
+
+        const obj = {
+            code: this.state.code
+      
+        };
+        console.log(obj);
+
+        axios.post(`http://localhost:3000/login`, { obj })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
         })
+
+
+
     }
 
     render() {
         return (
             <div style={{marginTop: 10}}>
-                <h3>Create New Todo</h3>
+                <h3>ENTER CODE TO ENTER GAME</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
-                        <label>code: </label>
+                        <label>ENTER CODE: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.code}
-                                onChange={this.onChangeTodoCode}
+                                onChange={this.onChangeCode}
                                 />
                     </div>                 
            
-                    <button onClick={this.handleClick.bind(this)}>Click</button>
+                  
                               <div>The number is: {this.state.random}</div>
                     <div className="form-group">
-                        <input type="submit" value="Create Todo" className="btn btn-primary" />
+                        <input type="submit" value="SUBMIT" className="btn btn-primary" />
                     </div>
+                    
                 </form>
+                <button onClick={this.handleClick.bind(this)}>Click</button>
             </div>
         )
     }
