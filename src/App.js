@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import buttons from ".//components/buttons";
+import login from ".//components/login";
 
 class App extends Component {
   render() {
@@ -21,7 +22,8 @@ class App extends Component {
         <button type="button" class="btn btn-secondary btn-lg">Y        </button>
          </div> */}
 
-        <Route path="/" exact component={buttons} />
+        <Route path="/buttons" exact component={buttons} />
+        <Route path="/" exact component={login} />
       </Router>
     );
   }
