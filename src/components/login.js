@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { render } from 'react-dom';
+import { useHistory } from "react-router-dom";
 
 export default class login extends Component {
 
@@ -49,6 +50,7 @@ export default class login extends Component {
             .then(res => {
               console.log(res);
               console.log(res.data);
+              
             })
 
             console.log(rend)  // testing 
@@ -74,6 +76,8 @@ export default class login extends Component {
     //     });
     // }
 
+    
+
     onSubmit(e) {  // send data to  login
         e.preventDefault();
         
@@ -90,6 +94,9 @@ export default class login extends Component {
         .then(res => {
           console.log(res);
           console.log(res.data);
+          this.props.history.push("/buttons");
+          
+          
         })
 
 
