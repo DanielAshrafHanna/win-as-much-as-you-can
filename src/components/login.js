@@ -30,7 +30,7 @@ export default class login extends Component {
         const min = 1000;
         const max = 9000;
          rand = Math.round(min + Math.random() * (max - min),0);
-        this.setState({ random: this.state.random + rand });
+        this.setState({ random: this.state.random = rand });
 
         // const random1 = {
         //     name: this.state.random
