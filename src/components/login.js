@@ -46,7 +46,7 @@ export default class login extends Component {
             random: this.state.random
           };
       
-          axios.post(`https://win-as-mush-as-you-can-game.herokuapp.com/register`,  rend )  // http://localhost:3000/register
+          axios.post(`https://win-as-much-as-you-can-backend.herokuapp.com/register`,  rend )  // http://localhost:3000/register
             .then(res => {
               console.log(res);
               console.log(res.data);
@@ -90,7 +90,7 @@ export default class login extends Component {
         };
         console.log(obj);
 
-        axios.post(`https://win-as-mush-as-you-can-game.herokuapp.com/login`, obj )  // http://localhost:3000/login
+        axios.post(`https://win-as-much-as-you-can-backend.herokuapp.com/login`, obj )  // http://localhost:3000/login
         .then(res => {
           console.log(res);
           console.log(res.data);
