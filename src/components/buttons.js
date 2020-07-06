@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button, Card, Row, Col, Statistic } from 'antd';
+import { CaretUpOutlined } from '@ant-design/icons'
 
 export default class buttons extends Component {
 
@@ -76,23 +78,71 @@ export default class buttons extends Component {
 
     render() {
         return (
-        <div>
-            <div class="mt-3 col-md-12">
-                <button onClick={this.IncrementItem_X} type="button"  className="btn btn-secondary btn-lg">X  </button>
-                X: { this.state.show ? <h2>{ this.state.x }</h2> : '' }
-                X Score: { this.state.show ? <h2>{ this.state.x_score }</h2> : '' }
-                {/* { this.state.show ? <h2>{ this.state.xy }</h2> : '' } */}
-                 
-                
-            </div>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            height: '100%',
+        }}>
+            <Row justify="center">
+                <Col span={12}>
+                    <Row gutter={16} justify="center">
+                        <Col span={6}>
+                            <Card >
+                                <Statistic
+                                    title="X"
+                                    value={this.state.x}
+                                    valueStyle={{ color: '#3f8600' }}
+                                />
+                            </Card>
+                        </Col>
+                        <Col span={6}>
+                            <Card>
+                                <Statistic
+                                    title="X Score"
+                                    value={this.state.x_score}
+                                    valueStyle={{ color: '#3f8600' }}
+                                />
+                            </Card>
+                        </Col>
+                    </Row>
+                    < br />
+                    <Row gutter={16} justify="center">
+                        <Col span={12}>
+                            <Button onClick={this.IncrementItem_X} block><CaretUpOutlined /></Button>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col span={12}>
+                    <Row gutter={16} justify="center">
+                            <Col span={6}>
+                                <Card >
+                                    <Statistic
+                                        title="Y"
+                                        value={this.state.y}
+                                        valueStyle={{ color: '#cf1322' }}
+                                    />
+                                </Card>
+                            </Col>
+                            <Col span={6}>
+                                <Card>
+                                    <Statistic
+                                        title="Y Score"
+                                        value={this.state.y_score}
+                                        valueStyle={{ color: '#cf1322' }}
+                                    />
+                                </Card>
+                            </Col>
+                        </Row>
+                        <br />
+                        <Row gutter={16} justify="center">
+                            <Col span={12}>
+                                <Button onClick={this.IncrementItem_Y} block><CaretUpOutlined /></Button>
+                            </Col>
+                        </Row>
+                </Col>
+            </Row>
 
-            <div class="mt-3 col-md-12">
-                <button onClick={this.IncrementItem_Y} type="button"  className="btn btn-secondary btn-lg">Y </button>
-                Y:{ this.state.show ? <h2>{ this.state.y }</h2> : '' }
-                Y Score:{ this.state.show ? <h2>{ this.state.y_score }</h2> : '' }
-            </div>
-
-                
          </div>
             
             
